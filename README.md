@@ -37,40 +37,33 @@ Cartographer算法在前端完成占据栅格地图的构建，得出激光雷�
 
 ### Karto
 一种基于位姿图优化的SLAM方法，使用了高度优化和非迭代的cholesky矩阵对系统进行解耦并求解。适用于各种室内环境，可以处理静态和动态障碍物。
-![image](https://github.com/wangdada-love/slam_learn/assets/80090934/670c5623-a191-453c-a2d2-0e4f1f9bb9b0)
+![image](https://github.com/wangdada-love/slam_learn/assets/80090934/ccd2f7fb-b277-4bd5-9259-b87820b460c8)
 
 Karto使用图论的标准形式表示地图，其中每个节点代表了移动机器人运行轨迹上的一个位姿点，以及当前位姿下传感器返回的感知信息。
 节点之间的边，代表了相邻机器人位姿之间的位移矢量。对每一个新的位姿点定位，需要节点间匹配关系和边带来的约束，保持定位估计误差的前后一致。
 
 ### LIO-SAM
 一种新型的激光惯性导航系统，结合了激光雷达和惯性测量单元数据，可以实现机器人的高精度定位和运动轨迹的建图。
+![image](https://github.com/wangdada-love/slam_learn/assets/80090934/90624254-6d26-4f21-998a-bad87cf6d17b)
 
-
-LIO-SAM系统架构图
 前端在传统的LIDAR-SLAM基础上，利用卡尔曼滤波和因子图优化算法，将激光雷达和IMU数据融合，进一步提高机器人的定位精度和建图效果。后端加入优化算法，使得机器人的定位精度和建图精度都得到极大提升。
 
 ### LOAM系列
 一种成熟的基于激光雷达的SLAM算法，包括LOAM、LOAM-Velodyne、LOAM-LiDAR等。
 
 其中LOAM使用3D激光雷达的数据来进行建图和定位，利用点云数据的特征，如空间聚类、连续性约束等来估计位姿。
+![image](https://github.com/wangdada-love/slam_learn/assets/80090934/5a5bef40-b5f5-4f6f-bbd5-972fab4e0008)
 
-
-### LOAM系统架构图
 LOAM-Velodyne则使用Velodyne激光雷达的3D点云数据，以实现更高精度的地图重建和定位；LOAM-LiDAR采用LiDAR传感器来进行建图和定位，可以高效获取目标物体的三维坐标信息，在一些机器人应用场景具有很大的优势。
-
-
-基于LOAM系统的地图构建局部
 
 ### ORB-SLAM3
 当前最优秀的基于特征点的视觉SLAM系统之一，支持单目、双目、RBG-D等多种相机模式，在特征提取、关键帧选取、地图维护、位姿优化等方面进行了优化，并能建立短期、中期和长期的数据关联，使得该系统兼具精度和鲁棒性。
+![image](https://github.com/wangdada-love/slam_learn/assets/80090934/694dc6c0-8075-4f9f-b249-8a27398405a3)
 
-
-ORB-SLAM3系统架构图
 前端视觉里程计基于ORB特征，建立图像帧之间特征点的数据关联，以及图像特征点和地图点之间3D到2D的数据关联，具有较好的鲁棒性和提取效率，回环检测和重定位也基于ORB特征实现。
 
 ### VINS-Fusion
 一种基于视觉惯性传感器的视觉SLAM算法。它将视觉和惯性信息进行融合，来提高机器人在未知环境下的定位和导航能力。
+![image](https://github.com/wangdada-love/slam_learn/assets/80090934/fcdedd51-f4ac-4e50-aa26-029696efa110)
 
-
-VINS-Fusion系统架构图
 前端和后端之间通过一个状态传递机制来交换数据。前端将IMU和图像数据合并，生成一组状态量，然后将其传递给后端进行融合和优化；后端将优化后的状态量传递回前端，以便更新机器人的运动估计。
